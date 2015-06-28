@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var showMessageLabel: UILabel!
+    @IBOutlet weak var enterNameTextField: UITextField!
+    @IBOutlet weak var enterMessageTextField: UITextField!
+    @IBOutlet weak var sendMessageButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func sendMessageButtonPressed() {
+        enterMessageTextField.resignFirstResponder()
+        showMessageLabel.text = enterMessageTextField.text
+        enterMessageTextField.text = ""
+        showMessageLabel.textColor = UIColor.redColor()
+        showMessageLabel.hidden = false
+        sendMessageButton.setTitle("Message Sent", forState: UIControlState.Normal)
+    }
 }
 
